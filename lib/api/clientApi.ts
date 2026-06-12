@@ -1,5 +1,5 @@
 import { NewNoteData, Note } from "@/types/note";
-import { NextServer } from "../api";
+import { NextServer } from "./api";
 import { User } from "@/types/user";
 
 export interface GetNotes {

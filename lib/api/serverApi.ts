@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { ServerBoolResponse } from "./clientApi";
-import { NextServer } from "../api";
+import { NextServer } from "./api";
 import { User } from "@/types/user";
 
 export async function checkServerSession() {
