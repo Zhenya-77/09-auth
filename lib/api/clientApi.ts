@@ -7,7 +7,7 @@ export interface GetNotes {
   totalPages: number;
 }
 
-interface fetchNotesProps {
+export interface fetchNotesProps {
   page?: number;
   searchQuery?: string;
   tag?: string;

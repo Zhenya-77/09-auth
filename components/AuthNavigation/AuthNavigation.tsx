@@ -25,7 +25,7 @@ function AuthNavigation() {
       </li>
 
       <li className={css.navigationItem}>
-        <p className={css.userEmail}>User email</p>
+        <p className={css.userEmail}>{user?.email}</p>
         <button onClick={handleLogOut} className={css.logoutButton}>
           Logout
         </button>

@@ -9,6 +9,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import NoteList from "@/components/NoteList/NoteList";
 import { useRouter } from "next/navigation";
 import { fetchNotes } from "@/lib/api/clientApi";
+import Link from "next/link";
 
 interface NotesClientProps {
   tag?: string;
@@ -33,8 +34,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
     setCurrentPage(1);
   };
 
-  const createNote = () => router.push("/notes/action/create");
-
   const totalPages = data?.totalPages ?? 0;
   return (
     <div className={css.app}>
@@ -47,9 +46,9 @@ const NotesClient = ({ tag }: NotesClientProps) => {
             onPageChange={setCurrentPage}
           />
         )}
-        <button onClick={createNote} className={css.button}>
+        <Link href={"/notes/action/create"} className={css.button}>
           Create note +
-        </button>
+        </Link>
       </header>
       {isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
     </div>
