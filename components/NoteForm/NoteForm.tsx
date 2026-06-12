@@ -4,9 +4,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import css from "./NoteForm.module.css";
 import { useId } from "react";
 import { NewNoteData, NoteTag } from "@/types/note";
-import { createNote } from "@/lib/api";
+
 import { useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
+import { createNote } from "@/lib/api/clientApi";
 
 function NoteForm() {
   const id = useId();
