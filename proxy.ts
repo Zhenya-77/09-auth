@@ -38,7 +38,7 @@ export async function proxy(request: NextRequest) {
         }
 
         if (isAuthRoute) {
-          return NextResponse.redirect(new URL("/profile", request.url), {
+          return NextResponse.redirect(new URL("/", request.url), {
             headers: {
               Cookie: cookieStore.toString(),
             },
