@@ -30,6 +30,8 @@ export async function proxy(request: NextRequest) {
             expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
             path: parsed.Path,
             maxAge: Number(parsed["Max-Age"]),
+            httpOnly: true,
+            secure: true,
           };
           if (parsed.accessToken)
             cookieStore.set("accessToken", parsed.accessToken, options);
