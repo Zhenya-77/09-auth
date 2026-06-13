@@ -17,21 +17,24 @@ export async function proxy(request: NextRequest) {
     pathname.startsWith(route)
   );
 
+  console.log("all cookies:", cookieStore.getAll());
+  console.log("cookie string:", cookieStore.toString());
+
   if (!accessToken) {
     if (refreshToken) {
       const data = await checkServerSession();
+
       const setCookie = data.headers["set-cookie"];
 
       if (setCookie) {
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
         for (const cookieStr of cookieArray) {
           const parsed = parse(cookieStr);
+
           const options = {
-            expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
+            // expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
             path: parsed.Path,
-            maxAge: Number(parsed["Max-Age"]),
-            httpOnly: true,
-            secure: true,
+            // maxAge: Number(parsed["Max-Age"]),
           };
           if (parsed.accessToken)
             cookieStore.set("accessToken", parsed.accessToken, options);
